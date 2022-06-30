@@ -17,7 +17,7 @@ public class MenuInput : MonoBehaviour
     public InputField sameRacePref;
     public InputField simSize;
 
-    public void Awake()
+    public void Start()
     {
         if (GameManager.instance.playerData != null)
         {
@@ -61,5 +61,10 @@ public class MenuInput : MonoBehaviour
         GameManager.instance.simAmount = int.Parse(simSize.text);
 
         SceneManager.LoadScene("Main");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

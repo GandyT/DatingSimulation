@@ -189,6 +189,18 @@ public class Human : MonoBehaviour
         data.coupleWith = -1;
         data.objRef = gameObject;
 
+        if (data.name == "Ethan Kyi")
+        {
+            data.income = 90;
+            data.appearance = 3;
+            data.race = 1;
+            data.height = 72;
+            data.weight = 133;
+            data.bmi = (int)(weight / Mathf.Pow(height, 2)) * 703;
+            data.gender = true;
+            data.sameRacePref = true;
+        }
+
         float weightScale = 1f;
 
         if (isMale)
@@ -364,8 +376,16 @@ public class Human : MonoBehaviour
 
             Color c = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
 
-            human.objRef.GetComponent<Human>().data.coupleWith = data.num;
-            human.objRef.GetComponent<Human>().UpdateStat();
+            if (human.objRef.name == "Player")
+            {
+                human.objRef.GetComponent<Player>().data.coupleWith = data.num;
+                human.objRef.GetComponent<Player>().UpdateStat();
+            }
+            else {
+                human.objRef.GetComponent<Human>().data.coupleWith = data.num;
+                human.objRef.GetComponent<Human>().UpdateStat();
+            }
+            
             human.objRef.GetComponent<MeshRenderer>().material.SetColor("_Color", c);
             human.objRef.layer = LayerMask.NameToLayer("Taken");
 

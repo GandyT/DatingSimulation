@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     {
         GameManager.instance.playerData.objRef = gameObject;
         data = GameManager.instance.playerData;
+        Debug.Log(data.objRef);
 
         if (data.gender)
         {
